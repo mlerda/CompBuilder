@@ -8,6 +8,10 @@ class CompaniesController < ApplicationController
 
 	def show
 		@company = Company.find(params[:id])
+		@company
+		# @company.ticker = FinModeling::Company.find(:stock_symbol)
+		FinModeling::Company.find(@company.ticker)
+
 	end
 
 	def new
