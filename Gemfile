@@ -7,10 +7,12 @@ group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
+
+# Use sqlite3 as the database for Active Record
 group :development do
-  # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -39,9 +41,6 @@ end
 
 # Use sec_query to search for company filings and information
 gem 'sec_query'
-
-# Use rubygems when sec_query installed as a gem
-# gem 'rubygems'
 
 # Use finmodeling to run analysis
 gem 'finmodeling'
