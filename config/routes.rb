@@ -1,10 +1,10 @@
 CompBuilder::Application.routes.draw do
-  require 'sec_query'
-  
+  devise_for :users, path: "/", path_names: { sign_in: '/login', sign_out: '/logout' }
+  root "home#index"
 
-  root 'companies#index'
-
-  resources :companies
+  resources :companies do
+    resources :comparisons
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

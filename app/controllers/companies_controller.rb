@@ -1,29 +1,21 @@
-require 'finmodeling'
-
 class CompaniesController < ApplicationController
+	before_action :set_company, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@companies = Company.all
 	end 
 
 	def show
-		#@company = Company.find
+		@company = Company.find(params[:id])
+		@company_summary = @company.get_balance
 
-		@company = FinModeling::Company.find(params[:id])		
-
-		#company = FinModeling::Company.find(company_params)
-		#company_name = company.name
 	end
 
-	def new
-		
+	def new		
 	end
 
 	def create
-  		@company = Company.new(company_params)
-    	
 	end
-
 
 
 private
@@ -38,34 +30,12 @@ def company_params
 end
 
 
-def get_company_filing_url(company)
-	company_info = FinModeling::Company.find(company)			
-	
-	filing_url = company_info.quarterly_reports.last.link
-		
-	return filing_url
-end
-
-		def get_filing(filing_url)
-			return FinModeling::QuarterlyReportFiling.download(filing_url)
-		end
-
-		def filing(get_filing)
-			filing = @get_filing.balance_sheet	
-			
-			return filing
-		end		
 
 
-		def print_reformulated_balance_sheet(filing)
-			reformed_balance_sheet = @filing.reformulated
 
-			summaries = []
-			summaries << reformed_balance_sheet.net_operating_assets
 
-			return print_summaries
 
-		end
+
 
 
 end

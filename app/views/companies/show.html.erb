@@ -1,3 +1,16 @@
+<h1><%= @company.name %></h1>
+
+
+<table>
+<tr>
+<th><%= @company_summary[0].rows[0].key %></th> 
+<td colspan="2"><%= @company_summary[0].rows[0].vals %></td>
+</tr>
+
+<tr>
+<th><%= @company_summary[0].rows[1].key %></th> 
+<td colspan="2" ><%= @company_summary[0].rows[1].vals %></td>
+</tr>
 
 
 
@@ -5,5 +18,16 @@
 
 
 
-<p><%= @print_summaries %></p>  
 
+
+
+
+</table>
+
+
+
+
+
+
+
+<%= link_to "Back", "/companies" %>
