@@ -6,9 +6,12 @@ class CompaniesController < ApplicationController
 	end 
 
 	def show
+		@companies = Company.all
 		@company = Company.find(params[:id])
 		@company_summary = @company.get_balance
-
+		@company_is = @company.get_income_statement
+		@company_prior_period_is = @company.get_prior_period_income_statement
+		@company_fy_is = @company.get_fy_income_statement
 	end
 
 	def new		

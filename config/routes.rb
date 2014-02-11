@@ -1,9 +1,12 @@
 CompBuilder::Application.routes.draw do
   devise_for :users, path: "/", path_names: { sign_in: '/login', sign_out: '/logout' }
+  resources :users, :only => [:show]
   root "home#index"
 
   resources :companies do
-    resources :comparisons
+    resources :comparisons do
+      put :favorite, on: :member
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

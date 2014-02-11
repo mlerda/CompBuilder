@@ -37,6 +37,8 @@ GEM
     bigdecimal (1.2.5)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.1.0.2)
+      sass (~> 3.2)
     builder (3.1.4)
     callsite (0.0.11)
     clbustos-rtf (0.4.2)
@@ -249,6 +251,7 @@ DEPENDENCIES
   annotate
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 3.1.0)
   coffee-rails (~> 4.0.0)
   devise (~> 3.2.2)
   finmodeling

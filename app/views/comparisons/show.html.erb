@@ -1,0 +1,277 @@
+<h2><%= @company.name %></h2>
+
+CURRENT PERIOD    
+<br>
+        <%= @company_is.rows[0].key %>
+        <%= @company_is.rows[0].vals[0].to_i.to_nearest_million %>
+<br>
+        <%= @company_is.rows[1].key %>
+        <%= @company_is.rows[1].vals[0].to_i.to_nearest_million %>
+<br>
+        Total Revenue
+        <%= total_revenue = @company_is.rows[0].vals[0].to_i.to_nearest_million + @company_is.rows[1].vals[0].to_i.to_nearest_million %>
+
+<br>
+<br>
+        <%= @company_is.rows[2].key %>
+        <%= @company_is.rows[2].vals[0].to_i.to_nearest_million %>    
+<br>
+        <%= @company_is.rows[3].key %>
+        <%= @company_is.rows[3].vals[0].to_i.to_nearest_million %>
+<br>
+        Total COGS
+        <%= total_cogs = @company_is.rows[2].vals[0].to_i.to_nearest_million + @company_is.rows[3].vals[0].to_i.to_nearest_million %>     
+<br>
+<br>
+        Gross Profit
+        <%= total_gross_profit = total_revenue - total_cogs %>
+<br>
+        Gross Margin
+        <% total_gross_margin = (total_gross_profit / total_revenue) %>    
+        <% total_gross_margin_percentage = total_gross_margin * 100 %>  
+        <%= total_gross_margin_percentage.round %>%  
+
+<br>
+<br>
+<br>
+
+PRIOR PERIOD
+
+<br>
+        <%= @company_prior_period_is.rows[1].key %>
+        <%= @company_prior_period_is.rows[1].vals[0].to_i.to_nearest_million %>
+<br>
+        <%= @company_prior_period_is.rows[6].key %>
+        <%= @company_prior_period_is.rows[6].vals[0].to_i.to_nearest_million %>
+<br>
+        Total Revenue
+        <%= total_prior_period_revenue = @company_prior_period_is.rows[1].vals[0].to_i.to_nearest_million + @company_prior_period_is.rows[6].vals[0].to_i.to_nearest_million %>
+
+<br>
+<br>
+        <%= @company_prior_period_is.rows[9].key %>
+        <%= @company_prior_period_is.rows[9].vals[0].to_i.to_nearest_million %>    
+<br>
+        <%= @company_prior_period_is.rows[13].key %>
+        <%= @company_prior_period_is.rows[13].vals[0].to_i.to_nearest_million %>
+<br>
+        Total COGS
+        <%= total_prior_period_cogs = @company_prior_period_is.rows[9].vals[0].to_i.to_nearest_million + @company_prior_period_is.rows[13].vals[0].to_i.to_nearest_million %>     
+<br>
+<br>
+        Gross Profit
+        <%= total_prior_period_gross_profit = total_prior_period_revenue - total_prior_period_cogs %>
+<br>
+        Gross Margin
+        <% total_prior_period_gross_margin = (total_prior_period_gross_profit / total_prior_period_revenue) %>    
+        <% total_prior_period_gross_margin_percentage = total_prior_period_gross_margin * 100 %>  
+        <%= total_prior_period_gross_margin_percentage.round %>%  
+
+<br>
+<br>
+LAST FY
+<br>
+<br>
+        <%= @company_fy_is.rows[2].key %>
+        <%= @company_fy_is.rows[2].vals[0].to_i.to_nearest_million %>
+<br>
+        <%= @company_fy_is.rows[3].key %>
+        <%= @company_fy_is.rows[3].vals[0].to_i.to_nearest_million %>
+<br>
+        Total Revenue
+        <%total_fy_revenue = @company_fy_is.rows[2].vals[0].to_i.to_nearest_million + @company_fy_is.rows[3].vals[0].to_i.to_nearest_million   %> 
+        <%= total_fy_revenue.round %>
+<br>
+<br>
+        <%= @company_fy_is.rows[6].key %>
+        <%= @company_fy_is.rows[6].vals[0].to_i.to_nearest_million %>    
+<br>
+        <%= @company_fy_is.rows[10].key %>
+        <%= @company_fy_is.rows[10].vals[0].to_i.to_nearest_million %>
+<br>
+        Total COGS
+        <%= total_fy_cogs = @company_fy_is.rows[6].vals[0].to_i.to_nearest_million + @company_fy_is.rows[10].vals[0].to_i.to_nearest_million  %>     
+<br>
+<br>
+        Gross Profit
+        <% total_fy_gross_profit = total_fy_revenue - total_fy_cogs %>
+        <%= total_fy_gross_profit.round %>
+<br>
+        Gross Margin
+        <% total_fy_gross_margin = (total_fy_gross_profit / total_fy_revenue) %>    
+        <% total_fy_gross_margin_percentage = total_fy_gross_margin * 100 %>  
+        <%= total_fy_gross_margin_percentage.round %>%  
+<br>
+<br>
+
+
+
+<br>
+<br>
+      LTM FIGURES  
+<br>
+<br>
+      LTM Revenue
+      <% total_ltm_revenue = total_fy_revenue + total_revenue - total_prior_period_revenue %>
+      <%= total_ltm_revenue.round %>
+<br>
+      LTM COGS
+      <% total_ltm_cogs = total_fy_cogs + total_cogs - total_prior_period_cogs %>
+      <%= total_ltm_cogs.round %>
+<br>
+      LTM Gross Profit
+      <% total_ltm_gross_profit = total_ltm_revenue - total_ltm_cogs %>
+      <%= total_ltm_gross_profit.round %>
+<br>
+      LTM Gross Profit Margin
+      <% total_ltm_gross_profit_margin = total_ltm_gross_profit / total_ltm_revenue %>
+      <% ltm_gross_margin = total_ltm_gross_profit_margin * 100 %>
+      <%= ltm_gross_margin.round %>%
+
+<br>
+<br>
+<br>
+
+
+
+<h2><%= @company_to_compare.name %></h2>
+
+<br>
+
+CURRENT PERIOD    
+
+<br>
+        <%= @company_to_compare_is.rows[0].key %>
+        <%= @company_to_compare_is.rows[0].vals[0].to_i.to_nearest_million %>
+<br>
+        <%= @company_to_compare_is.rows[1].key %>
+        <%= @company_to_compare_is.rows[1].vals[0].to_i.to_nearest_million %>
+<br>
+        Total Revenue
+        <%= total_company_to_compare_revenue = @company_to_compare_is.rows[0].vals[0].to_i.to_nearest_million + @company_to_compare_is.rows[1].vals[0].to_i.to_nearest_million  %>
+
+<br>
+<br>
+        <%= @company_to_compare_is.rows[2].key %>
+        <%= @company_to_compare_is.rows[2].vals[0].to_i.to_nearest_million %>    
+<br>
+        <%= @company_to_compare_is.rows[3].key %>
+        <%= @company_to_compare_is.rows[3].vals[0].to_i.to_nearest_million %>
+<br>
+        Total COGS
+        <%= total_company_to_compare_cogs = @company_to_compare_is.rows[2].vals[0].to_i.to_nearest_million + @company_to_compare_is.rows[3].vals[0].to_i.to_nearest_million   %>     
+<br>
+<br>
+        Gross Profit
+        <%= total_company_to_compare_gross_profit = total_company_to_compare_revenue - total_company_to_compare_cogs %>
+<br>
+        Gross Margin
+        <% total_company_to_compare_gross_margin = (total_company_to_compare_gross_profit / total_company_to_compare_revenue) %>    
+        <% total_company_to_compare_gross_margin_percentage = total_company_to_compare_gross_margin * 100 %>  
+        <%= total_company_to_compare_gross_margin_percentage.round %>%  
+
+<br>
+<br>
+<br>
+
+PRIOR PERIOD
+
+<br>
+        <%= @company_to_compare_prior_period_is.rows[1].key %>
+        <%= @company_to_compare_prior_period_is.rows[1].vals[0].to_i.to_nearest_million %>
+<br>
+        <%= @company_to_compare_prior_period_is.rows[6].key %>
+        <%= @company_to_compare_prior_period_is.rows[6].vals[0].to_i.to_nearest_million %>
+<br>
+        Total Revenue
+        <%= total_company_to_compare_prior_period_revenue = @company_to_compare_prior_period_is.rows[1].vals[0].to_i.to_nearest_million + @company_to_compare_prior_period_is.rows[6].vals[0].to_i.to_nearest_million %>
+
+<br>
+<br>
+        <%= @company_to_compare_prior_period_is.rows[9].key %>
+        <%= @company_to_compare_prior_period_is.rows[9].vals[0].to_i.to_nearest_million %>    
+<br>
+        <%= @company_to_compare_prior_period_is.rows[13].key %>
+        <%= @company_to_compare_prior_period_is.rows[13].vals[0].to_i.to_nearest_million %>
+<br>
+        Total COGS
+        <%= total_company_to_compare_prior_period_cogs = @company_to_compare_prior_period_is.rows[9].vals[0].to_i.to_nearest_million + @company_to_compare_prior_period_is.rows[13].vals[0].to_i.to_nearest_million   %>     
+<br>
+<br>
+        Gross Profit
+        <%= total_company_to_compare_prior_period_gross_profit = total_company_to_compare_prior_period_revenue - total_company_to_compare_prior_period_cogs %>
+<br>
+        Gross Margin
+        <% total_company_to_compare_prior_period_gross_margin = (total_company_to_compare_prior_period_gross_profit / total_company_to_compare_prior_period_revenue) %>    
+        <% total_company_to_compare_prior_period_gross_margin_percentage = total_company_to_compare_prior_period_gross_margin * 100 %>  
+        <%= total_company_to_compare_prior_period_gross_margin_percentage.round %>%  
+
+<br>
+<br>
+LAST FY
+<br>
+<br>
+        <%= @company_to_compare_fy_is.rows[2].key %>
+        <%= @company_to_compare_fy_is.rows[2].vals[0].to_i.to_nearest_million %>
+<br>
+        <%= @company_to_compare_fy_is.rows[3].key %>
+        <%= @company_to_compare_fy_is.rows[3].vals[0].to_i.to_nearest_million %>
+<br>
+        Total Revenue
+        <% total_company_to_compare_fy_revenue = @company_to_compare_fy_is.rows[2].vals[0].to_i.to_nearest_million + @company_to_compare_fy_is.rows[3].vals[0].to_i.to_nearest_million %> 
+        <%= total_company_to_compare_fy_revenue.round %>
+<br>
+<br>
+        <%= @company_to_compare_fy_is.rows[6].key %>
+        <%= @company_to_compare_fy_is.rows[6].vals[0].to_i.to_nearest_million %>    
+<br>
+        <%= @company_to_compare_fy_is.rows[10].key %>
+        <%= @company_to_compare_fy_is.rows[10].vals[0].to_i.to_nearest_million %>
+<br>
+        Total COGS
+        <%= total_company_to_compare_fy_cogs = @company_to_compare_fy_is.rows[6].vals[0].to_i.to_nearest_million + @company_to_compare_fy_is.rows[10].vals[0].to_i.to_nearest_million %>     
+<br>
+<br>
+        Gross Profit
+        <% total_company_to_compare_fy_gross_profit = total_company_to_compare_fy_revenue - total_company_to_compare_fy_cogs %>
+        <%= total_company_to_compare_fy_gross_profit.round %>
+<br>
+        Gross Margin
+        <% total_company_to_compare_fy_gross_margin = (total_company_to_compare_fy_gross_profit / total_company_to_compare_fy_revenue) %>    
+        <% total_company_to_compare_fy_gross_margin_percentage = total_company_to_compare_fy_gross_margin * 100 %>  
+        <%= total_company_to_compare_fy_gross_margin_percentage.round %>%  
+<br>
+<br>
+
+
+
+<br>
+<br>
+      LTM FIGURES  
+<br>
+<br>
+      LTM Revenue
+      <% total_company_to_compare_ltm_revenue = total_company_to_compare_fy_revenue + total_company_to_compare_revenue - total_company_to_compare_prior_period_revenue %>
+      <%= total_company_to_compare_ltm_revenue.round %>
+<br>
+      LTM COGS
+      <% total_company_to_compare_ltm_cogs = total_company_to_compare_fy_cogs + total_company_to_compare_cogs - total_company_to_compare_prior_period_cogs %>
+      <%= total_company_to_compare_ltm_cogs.round %>
+<br>
+      LTM Gross Profit
+      <% total_company_to_compare_ltm_gross_profit = total_company_to_compare_ltm_revenue - total_company_to_compare_ltm_cogs %>
+      <%= total_company_to_compare_ltm_gross_profit.round %>
+<br>
+      LTM Gross Profit Margin
+      <% total_company_to_compare_ltm_gross_profit_margin = total_company_to_compare_ltm_gross_profit / total_company_to_compare_ltm_revenue %>
+      <% company_to_compare_ltm_gross_margin = total_company_to_compare_ltm_gross_profit_margin * 100 %>
+      <%= company_to_compare_ltm_gross_margin.round %>%
+
+
+<br>
+<br>
+
+
+<%= link_to "Favorite", favorite_company_comparison_path(@company, @company_to_compare), method: :put %>
+
+<%= link_to "Back", "/companies" %>
