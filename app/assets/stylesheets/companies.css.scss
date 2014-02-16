@@ -2,54 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-	container {
-		max-width: 600px;
-		}
-
-	.header_buttons {
-		font-size: 15px;
-		padding: 5px;
-		margin: 5px;
-
-		}	
-
-
-	.table {
-		max-width: 400px;
-		}
-
-
-
-	.row {
-		max-width: 400px;		
-		
-		}
-	
-
-
-	body {
-		padding-top: 2px;
-		padding-left: 10px;
-		margin: 10px;
-			}
-
-	body {
-		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-		font-size: 14px;
-		line-height: 1.428571429;
-		color: #333;
-		background-color: #fff;
-		}
-
-	
-
-	.list_box {
-		padding-top:5px;
-		padding-bottom: 5px;
-		padding-left: 20px;
-		padding-right: 10px;
-
-
-		}
-
+body {
+	max-width: 1200px;
+	margin-left: 100px;
+}

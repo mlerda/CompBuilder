@@ -8,161 +8,138 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
   </head>
 
 
 
 <body>
-<h2><%= @company.name %></h2>
-<br>
-<br>
 
-<table>
-<h3>SUMMARY FINANCIALS</h3>
+<h1><%= @company.name %></h1>
+<br>
+<br>
+<h3>Company Description</h3>
+  <p><%= @company.description %></p>  
+<br>
+<br>
+<h3>Valuation Metrics</h3>
+  <table>
+    <tr>
+      <td>Shares Outstanding</td>
+      <td><%= "1000" %></td>
+    </tr>
+    <tr>
+      <td>Current Share Price</td>
+      <td><%= "1000" %></td>
+    </tr>
+    <tr>
+      <td>Total Market Cap</td>
+      <td><%= "$1000" %></td>
+    </tr>
 
-CURRENT PERIOD    
-<br>
-        <%= @company_is.rows[0].key %>
-        <%= @company_is.rows[0].vals[0].to_i.to_nearest_million %>
-<br>
-        <%= @company_is.rows[1].key %>
-        <%= @company_is.rows[1].vals[0].to_i.to_nearest_million %>
-<br>
-        Total Revenue
-        <%= total_revenue = @company_is.rows[0].vals[0].to_i.to_nearest_million + @company_is.rows[1].vals[0].to_i.to_nearest_million %>
-
-<br>
-<br>
-        <%= @company_is.rows[2].key %>
-        <%= @company_is.rows[2].vals[0].to_i.to_nearest_million %>    
-<br>
-        <%= @company_is.rows[3].key %>
-        <%= @company_is.rows[3].vals[0].to_i.to_nearest_million %>
-<br>
-        Total COGS
-        <%= total_cogs = @company_is.rows[2].vals[0].to_i.to_nearest_million + @company_is.rows[3].vals[0].to_i.to_nearest_million %>     
-<br>
-<br>
-        Gross Profit
-        <%= total_gross_profit = total_revenue - total_cogs %>
-<br>
-        Gross Margin
-        <% total_gross_margin = (total_gross_profit / total_revenue) %>    
-        <% total_gross_margin_percentage = total_gross_margin * 100 %>  
-        <%= total_gross_margin_percentage.round %>%  
-
-<br>
-<br>
-<br>
-
-PRIOR PERIOD
-
-<br>
-        <%= @company_prior_period_is.rows[1].key %>
-        <%= @company_prior_period_is.rows[1].vals[0].to_i.to_nearest_million %>
-<br>
-        <%= @company_prior_period_is.rows[6].key %>
-        <%= @company_prior_period_is.rows[6].vals[0].to_i.to_nearest_million %>
-<br>
-        Total Revenue
-        <%= total_prior_period_revenue = @company_prior_period_is.rows[1].vals[0].to_i.to_nearest_million + @company_prior_period_is.rows[6].vals[0].to_i.to_nearest_million %>
-
-<br>
-<br>
-        <%= @company_prior_period_is.rows[9].key %>
-        <%= @company_prior_period_is.rows[9].vals[0].to_i.to_nearest_million %>    
-<br>
-        <%= @company_prior_period_is.rows[13].key %>
-        <%= @company_prior_period_is.rows[13].vals[0].to_i.to_nearest_million %>
-<br>
-        Total COGS
-        <%= total_prior_period_cogs = @company_prior_period_is.rows[9].vals[0].to_i.to_nearest_million + @company_prior_period_is.rows[13].vals[0].to_i.to_nearest_million %>     
-<br>
-<br>
-        Gross Profit
-        <%= total_prior_period_gross_profit = total_prior_period_revenue - total_prior_period_cogs %>
-<br>
-        Gross Margin
-        <% total_prior_period_gross_margin = (total_prior_period_gross_profit / total_prior_period_revenue) %>    
-        <% total_prior_period_gross_margin_percentage = total_prior_period_gross_margin * 100 %>  
-        <%= total_prior_period_gross_margin_percentage.round %>%  
-
-<br>
-<br>
-LAST FY
-
-<br>
-        <%= @company_fy_is.rows[2].key %>
-        <%= @company_fy_is.rows[2].vals[0].to_i.to_nearest_million %>
-<br>
-        <%= @company_fy_is.rows[3].key %>
-        <%= @company_fy_is.rows[3].vals[0].to_i.to_nearest_million %>
-<br>
-        Total Revenue
-        <%total_fy_revenue = @company_fy_is.rows[2].vals[0].to_i.to_nearest_million + @company_fy_is.rows[3].vals[0].to_i.to_nearest_million   %> 
-        <%= total_fy_revenue.round %>
-<br>
-<br>
-        <%= @company_fy_is.rows[6].key %>
-        <%= @company_fy_is.rows[6].vals[0].to_i.to_nearest_million %>    
-<br>
-        <%= @company_fy_is.rows[10].key %>
-        <%= @company_fy_is.rows[10].vals[0].to_i.to_nearest_million %>
-<br>
-        Total COGS
-        <%= total_fy_cogs = @company_fy_is.rows[6].vals[0].to_i.to_nearest_million + @company_fy_is.rows[10].vals[0].to_i.to_nearest_million  %>     
-<br>
-<br>
-        Gross Profit
-        <% total_fy_gross_profit = total_fy_revenue - total_fy_cogs %>
-        <%= total_fy_gross_profit.round %>
-<br>
-        Gross Margin
-        <% total_fy_gross_margin = (total_fy_gross_profit / total_fy_revenue) %>    
-        <% total_fy_gross_margin_percentage = total_fy_gross_margin * 100 %>  
-        <%= total_fy_gross_margin_percentage.round %>%  
-<br>
-<br>
-      LTM FIGURES  
-<br>
-<br>
-      LTM Revenue
-      <% total_ltm_revenue = total_fy_revenue + total_revenue - total_prior_period_revenue %>
-      <%= total_ltm_revenue.round %>
-<br>
-      LTM COGS
-      <% total_ltm_cogs = total_fy_cogs + total_cogs - total_prior_period_cogs %>
-      <%= total_ltm_cogs.round %>
-<br>
-      LTM Gross Profit
-      <% total_ltm_gross_profit = total_ltm_revenue - total_ltm_cogs %>
-      <%= total_ltm_gross_profit.round %>
-<br>
-      LTM Gross Profit Margin
-      <% total_ltm_gross_profit_margin = total_ltm_gross_profit / total_ltm_revenue %>
-      <% ltm_gross_margin = total_ltm_gross_profit_margin * 100 %>
-      <%= ltm_gross_margin.round %>%
+    <tr>
+      <td>Total Cash</td>
+      <td><%= "1000" %></td>
+    </tr>
+    <tr>
+      <td>Total Debt</td>
+      <td><%= "1000" %></td>
+    </tr>
+    <tr>
+      <td>Enterprise Value</td>
+      <td><%= "$1000" %></td>
+    </tr>
 
 
+
+  </table>
+<br>
+<br>
+<h3>Summary Financials</h3>
+
+<table class="table">
+
+  <thead>
+    <tr>
+      <th>METRIC</th>
+      <th>CURRENT PERIOD</th>     
+      <th>PRIOR PERIOD</th>
+      <th>LAST FY</th>
+      <th>LTM</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>Sales Revenue Goods Net</td>
+      <td><%= goods_sales_current_period = @company_is.rows[0].vals[0].to_i.to_nearest_million %></td>
+      <td><%= goods_sales_prior_period = @company_prior_period_is.rows[1].vals[0].to_i.to_nearest_million %></td>
+      <td><%= goods_sales_last_fy = @company_fy_is.rows[2].vals[0].to_i.to_nearest_million %></td>
+      <td><%= ltm_goods_sales = goods_sales_current_period + goods_sales_last_fy - goods_sales_prior_period %></td>
+    </tr>
+
+    <tr>
+      <td>Sales Revenue Services Net</td>
+      <td><%= services_sales_current_period = @company_is.rows[1].vals[0].to_i.to_nearest_million %></td>
+      <td><%= services_sales_prior_period = @company_prior_period_is.rows[6].vals[0].to_i.to_nearest_million %></td>
+      <td><%= services_sales_last_fy = @company_fy_is.rows[3].vals[0].to_i.to_nearest_million %></td>
+      <td><%= ltm_services_sales = services_sales_current_period + services_sales_last_fy - services_sales_prior_period %></td>
+    </tr>
+
+    <tr>
+      <td>Total Revenue</td>
+      <td><%= total_sales_current_period = goods_sales_current_period + services_sales_current_period%></td>
+      <td><%= total_sales_prior_period = goods_sales_prior_period + services_sales_prior_period  %></td>
+      <td><%= total_sales_last_fy = goods_sales_last_fy + services_sales_last_fy %></td>
+      <td><%= ltm_total_revenue = ltm_goods_sales + ltm_services_sales %></td>
+    </tr>
+
+    <tr>
+      <td>Cost of Goods Sold</td>
+      <td><%= cost_of_goods_current_period = @company_is.rows[2].vals[0].to_i.to_nearest_million %></td>
+      <td><%= cost_of_goods_prior_period = @company_prior_period_is.rows[9].vals[0].to_i.to_nearest_million %></td>
+      <td><%= cost_of_goods_last_fy = @company_fy_is.rows[6].vals[0].to_i.to_nearest_million %></td>
+      <td><%= ltm_cost_of_goods = cost_of_goods_current_period + cost_of_goods_last_fy - cost_of_goods_prior_period %></td>
+    </tr>
+
+    <tr>
+      <td>Cost of Services</td>
+      <td><%= cost_of_services_current_period = @company_is.rows[3].vals[0].to_i.to_nearest_million %></td>
+      <td><%= cost_of_services_prior_period = @company_prior_period_is.rows[13].vals[0].to_i.to_nearest_million %></td>
+      <td><%= cost_of_services_last_fy = @company_fy_is.rows[10].vals[0].to_i.to_nearest_million %></td>
+      <td><%= ltm_cost_of_services = cost_of_services_current_period + cost_of_services_last_fy - cost_of_services_prior_period %></td>
+    </tr>
+
+    <tr>
+      <td>Total COGS</td>
+      <td><%= total_cogs_current_period = cost_of_goods_current_period + cost_of_services_current_period %></td>
+      <td><%= total_cogs_prior_period = cost_of_goods_prior_period + cost_of_services_prior_period %></td>
+      <td><%= total_cogs_last_fy = cost_of_goods_last_fy + cost_of_services_last_fy %></td>
+      <td><%= ltm_total_cogs = total_cogs_current_period + total_cogs_last_fy - total_cogs_prior_period %></td>
+    </tr>
+
+    <tr>
+      <td>Gross Profit</td>
+      <td><%= gross_profit_current_period = total_sales_current_period - total_cogs_current_period %></td>
+      <td><%= gross_profit_prior_period = total_sales_prior_period - total_cogs_prior_period %></td>
+      <td><%= gross_profit_last_fy = total_sales_last_fy - total_cogs_last_fy %></td>
+      <td><%= ltm_gross_profit = ltm_total_revenue - ltm_total_cogs %></td>
+    </tr>
+
+    <tr>
+      <td>Gross Margin</td>
+      <td><%= gross_margin_current_period = (gross_profit_current_period/total_sales_current_period)*100 %></td>
+      <td><%= gross_margin_prior_period = (gross_profit_prior_period/total_sales_prior_period)*100 %></td>
+      <td><%= gross_margin_last_fy = (gross_profit_last_fy/total_sales_last_fy)*100 %></td>
+      <td><%= ltm_gross_margin = (ltm_gross_profit/ltm_total_revenue)*100 %></td>
+    </tr>
+
+</tbody>
     
 
 </table>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>
@@ -178,15 +155,11 @@ LAST FY
   
 
   <% @companies.each do |company_to_compare| %>
-  <ul>          
-              <a href="#"><%= link_to company_to_compare.name, company_comparison_path(@company, company_to_compare) %>
-            </a>
-      
-             
-        
-      </ul>    
-      
-      
+  <ul>
+
+    <a href="#"><%= link_to company_to_compare.name, company_comparison_path(@company, company_to_compare) %></a>
+  
+  </ul>        
 	<% end %>
 
 
